@@ -13,7 +13,8 @@ trap cleanup SIGTERM
 # Clean up any old vnc sessions
 rm -f /tmp/.X*-lock
 rm -rf /tmp/.X11-unix
-vncserver
+vncserver -desktop Android
+jwm &
 emulator @Nexus_5X_API_23 &
 
 IP=`hostname -i`

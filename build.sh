@@ -7,7 +7,7 @@ echo "Starting build"
 
 apis=(23 25 27)
 archs=(x86)
-images=(goole_apis)
+images=(google_apis)
 
 for arch in ${archs[*]}; do
   for image in ${images[*]}; do 
