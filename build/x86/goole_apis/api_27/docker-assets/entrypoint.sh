@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Starting Android"
-
+export PATH=/opt/TurboVNC/bin:$PATH
 cleanup ()
 {
   echo "Exiting"
@@ -10,9 +10,11 @@ cleanup ()
 }
 
 trap cleanup SIGTERM
-
+# Clean up any old vnc sessions
+rm -f /tmp/.X*-lock
+rm -rf /tmp/.X11-unix
 vncserver
-emulator @Nexus_5X_API_22 &
+emulator @Nexus_5X_API_27 &
 
 IP=`hostname -i`
 socat tcp-listen:5554,bind=$IP,fork tcp:127.0.0.1:5554 &
